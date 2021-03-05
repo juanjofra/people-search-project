@@ -1,0 +1,77 @@
+
+.conteiner-fluid {
+  margin: 0 auto;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+}
+
+.container-fluid__nav {
+  background-color: #282c34;
+  margin-top: 50px;
+  width: 15%;
+}
+
+.container-fluid__ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid__li {
+  margin-bottom: 5px;
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: #DAA520;
+  font-weight: 600;
+}
+
+.content {
+  background-color: #f5f5f5;
+  width: 85%;
+}
+
+.table {
+  margin: 10px auto;
+  width: 98%;
+}
+
+.card {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.card_header {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+
+.card__button:link, .card__button:visited, .card__button:active, .card__button:hover {
+  text-decoration:none;
+  color: #DAA520;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: c;
+}
+
+svg {
+  display: inline-block;
+  width: 15px;
+  margin-right: 5px;
+  fill: #DAA520;
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
