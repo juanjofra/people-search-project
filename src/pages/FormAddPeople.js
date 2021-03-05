@@ -23,19 +23,32 @@ const FormAddPeople = () => {
     }),
 
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+      console.log(values);
+      
+      const url = 'http://192.168.100.6:4000/api/clientes/register';
+
+      fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(values), // data can be `string` or {object}!
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+          },
   });
 
   return (
 
-
     <div className='container'>
 
+      <div className='content-formAddPeople-button'>
       <NavLink className='formAddPeople-button' to="/">
         <svg className='svg-formAddPeople' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
         <span className='card__span'>Cancelar</span>
       </NavLink>
+      </div>
 
       <form className="row g-3 form" onSubmit={formik.handleSubmit}>
       <div class="col-md-12">

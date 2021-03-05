@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { NavLink } from "react-router-dom";
 
 function TablePeoples() {
 
-  const url = "#";
+  const [clientes, setClientes] = useState([]);
+  console.log(clientes)
+
+  useEffect(() => {
+    fetch('http://192.168.100.6:4000/api/clientes').then(res => res.json()).then(({docs}) => setClientes(docs));
+    
+  }, [])
 
   return (
     <>
@@ -28,26 +34,18 @@ function TablePeoples() {
           </tr>
         </thead>
         <tbody>
-          <tr className="table-head">
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-          </tr>
+          { clientes.map( cliente => (
+            <tr key={cliente._id} className="table-head">
+              <th scope="row">1</th>
+              <td>{cliente.name}</td>
+              <td>{cliente.ci}</td>
+              <td>{cliente.age}</td>
+              <td>{cliente.phone}</td>
+              <td>{cliente.secc}</td>
+              <td>{cliente.district}</td>
+              <td>{cliente.operator}</td>
+            </tr>
+          ))}
         </tbody>
       </table>     
       </div>

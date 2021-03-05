@@ -1,8 +1,7 @@
 import React from 'react'
 
-import TablePeoples from './TablePeoples';
+import TablePeoples from '../pages/TablePeoples';
 import NavSearch from './NavSearch'
-import {FormAddPeople} from '../pages/FormAddPeople'
 
 function Content() {
   return (
