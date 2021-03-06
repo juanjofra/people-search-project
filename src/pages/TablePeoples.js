@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 import { NavLink } from "react-router-dom";
+import { getClientes } from '../services/fetchClientes';
 
 function TablePeoples() {
 
   const [clientes, setClientes] = useState([]);
-  console.log(clientes)
 
   useEffect(() => {
-    fetch('http://192.168.100.6:4000/api/clientes').then(res => res.json()).then(({docs}) => setClientes(docs));
-    
-  }, [])
+    getClientes().then(({docs}) => setClientes(docs));
+  }, []);
+
 
   return (
     <>
@@ -20,6 +20,7 @@ function TablePeoples() {
               <span className='card__span'>Agregar</span>
           </NavLink>
         </div>
+
        <table className="table table-striped table-hover">
         <thead className="table-dark">
           <tr className="table-head">

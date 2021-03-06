@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './FormAddPeople.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { setCliente } from '../services/fetchClientes';
+import {ClienteContext} from '../context/ClienteContext';
 
 const FormAddPeople = () => {
+
+const context = useContext(ClienteContext)
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -23,26 +28,13 @@ const FormAddPeople = () => {
     }),
 
     onSubmit: values => {
-      console.log(values);
-      
-      const url = 'http://192.168.100.6:4000/api/clientes/register';
-
-      fetch(url, {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify(values), // data can be `string` or {object}!
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
-          },
+      setCliente(values).then(data => console.log(data))
+    },
   });
 
   return (
 
     <div className='container'>
-
       <div className='content-formAddPeople-button'>
       <NavLink className='formAddPeople-button' to="/">
         <svg className='svg-formAddPeople' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
@@ -51,7 +43,7 @@ const FormAddPeople = () => {
       </div>
 
       <form className="row g-3 form" onSubmit={formik.handleSubmit}>
-      <div class="col-md-12">
+      <div className="col-md-12">
         <label className='form-label' htmlFor="name">Nombre</label>
           <input
             id="name"
@@ -68,7 +60,7 @@ const FormAddPeople = () => {
           ) : null}
         </div>
 
-        <div class="col-md-7">
+        <div className="col-md-7">
           <label className='form-label' htmlFor="ci">CI</label>
           <input
             id="ci"
@@ -85,7 +77,7 @@ const FormAddPeople = () => {
           ) : null}
         </div>
 
-        <div class="col-md-5">
+        <div className="col-md-5">
           <label className='form-label' htmlFor="age">Edad</label>
           <input
             id="age"
@@ -102,7 +94,7 @@ const FormAddPeople = () => {
           ) : null}
         </div>
 
-        <div class="col-md-7">
+        <div className="col-md-7">
           <label className='form-label' htmlFor="phone">Telefono</label>
           <input
             id="phone"
@@ -119,7 +111,7 @@ const FormAddPeople = () => {
           ) : null}
         </div>
 
-        <div class="col-md-5">
+        <div className="col-md-5">
           <label className='form-label' htmlFor="secc">Secc</label>
           <input
             id="secc"
@@ -136,7 +128,7 @@ const FormAddPeople = () => {
           ) : null}
         </div>
 
-        <div class="col-md-12">
+        <div className="col-md-12">
         <label className='form-label' htmlFor="district">Barrio</label>
           <input
             id="district"
@@ -153,7 +145,7 @@ const FormAddPeople = () => {
           ) : null}
         </div>
 
-        <div class="col-md-12">
+        <div className="col-md-12">
         <label className='form-label' htmlFor="operator">Operador</label>
           <input
             id="operator"

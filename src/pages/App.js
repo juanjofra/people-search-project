@@ -1,47 +1,40 @@
+
 import Content from '../components/Content';
 import FormAddPeople from './FormAddPeople';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  NavLink
-} from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import './App.css';
+import ClienteProvider from '../context/ClienteContext';
 
 function App() {
   return (
-    <Router>
-      <div className='conteiner-fluid'>
+    <ClienteProvider>
+      <Router>
+        <div className='conteiner-fluid'>
+          <nav className='container-fluid__nav'>
+            <ul className='container-fluid__ul'>
+              <li className='container-fluid__li'>
+              <NavLink className='container-fluid__a' to="/">Home</NavLink>
+              </li>
+              <li className='container-fluid__li'>
+                <NavLink className='container-fluid__a' to="/dashboard">Dashboard</NavLink>
+              </li>
+            </ul>
+          </nav>
 
-        <nav className='container-fluid__nav'>
-          <ul className='container-fluid__ul'>
-            <li>
-            <NavLink className='container-fluid__li' to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink className='container-fluid__li' to="/Form-add-people">Form-add-people</NavLink>
-          </li>
-          <li>
-            <NavLink className='container-fluid__li' to="/dashboard">Dashboard</NavLink>
-          </li>
-          </ul>
-        </nav>
-
-        <section className='content'>
-          <Switch>
-            <Route exact path='/'>
-              <Content />
-            </Route>
-            <Route path='/Form-add-people'>
-              <FormAddPeople/>
-            </Route>
-          </Switch>
-        </section>
-      </div>
-    </Router>
-
+          <section className='content'>
+            <Switch>
+              <Route exact path='/'>
+                <Content />
+              </Route>
+              <Route exact path='/Form-add-people'>
+                <FormAddPeople/>
+              </Route>
+            </Switch>
+          </section>
+        </div>
+      </Router>
+    </ClienteProvider>
+   
   );
 }
 

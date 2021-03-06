@@ -13,18 +13,26 @@
 }
 
 .container-fluid__ul {
-  margin: 0;
+  width: 90%;
+  margin: 0 auto;
   padding: 0;
 }
 
-.container-fluid__li {
-  margin-bottom: 5px;
+.container-fluid__a {
   list-style: none;
   text-decoration: none;
   cursor: pointer;
   color: #DAA520;
   font-weight: 600;
+  width: 100%;
+  display: inline-block;
 }
+
+.container-fluid__li:hover, .container-fluid__li:hover > a{
+  background-color: #DAA520;
+  color: #ffffff;
+  }
+
 
 .content {
   background-color: #ffffff;
@@ -63,6 +71,11 @@ svg {
   width: 15px;
   margin-right: 5px;
   fill: #DAA520;
+}
+
+.toast {
+  position: fixed;
+  z-index: 5
 }
 
 
