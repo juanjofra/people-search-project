@@ -21,13 +21,17 @@
   padding-right: 1rem;
 }
 
-.formAddPeople-button:link, .formAddPeople-button:visited, .formAddPeople-button:active, .formAddPeople-button:hover {
+.formAddPeople-button:link, .formAddPeople-button:visited, .formAddPeople-button:hover {
   color: #da0c0c;
   display: flex;
   align-items: center;
   font-size: 18px;
   font-weight: 700;
   text-decoration:none;
+}
+
+.formAddPeople-button:hover{
+  text-decoration: underline;
 }
 
 .svg-formAddPeople {

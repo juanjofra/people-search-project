@@ -1,11 +1,11 @@
 
 export const getClientes = () => {
 
-  return fetch('http://localhost:4000/api/clientes').then(res => res.json());
+  return fetch('https://backend-people-search-project.herokuapp.com/api/clientes').then(res => res.json());
 }
 
 export const setCliente = (values) => {
-  const url = 'http://localhost:4000/api/clientes/register';
+  const url = 'https://backend-people-search-project.herokuapp.com/api/clientes/register';
 
      return fetch(url, {
         method: 'POST', 

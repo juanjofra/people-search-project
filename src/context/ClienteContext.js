@@ -3,12 +3,15 @@ import React, {createContext, useState} from 'react';
 export const ClienteContext = createContext();
 
 const ClienteProvider = (props) => {
-  const [state, setstate] = useState('prueba');
+  const [success, setSuccess] = useState(false);
+  const [search, setSearch ] = useState('');
 
   return (
     <ClienteContext.Provider value={{
-      state,
-      setstate
+      success,
+      setSuccess,
+      search,
+      setSearch
     }}>
       {props.children}
     </ClienteContext.Provider>

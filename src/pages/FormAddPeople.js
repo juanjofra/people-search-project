@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import './FormAddPeople.css'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { setCliente } from '../services/fetchClientes';
@@ -8,7 +8,10 @@ import {ClienteContext} from '../context/ClienteContext';
 
 const FormAddPeople = () => {
 
-const context = useContext(ClienteContext)
+const {setSuccess} = useContext(ClienteContext);
+const [error, setError] = useState('');
+let history = useHistory();
+console.log(history)
 
   const formik = useFormik({
     initialValues: {
@@ -23,12 +26,23 @@ const context = useContext(ClienteContext)
 
     validationSchema: Yup.object({
       name: Yup.string()
-        .max(15, 'Must be 15 characters or less')
+        .max(35, 'Must be 35 characters or less')
         .required('Requerido'),
     }),
 
     onSubmit: values => {
-      setCliente(values).then(data => console.log(data))
+      setCliente(values).then(data => {
+        if(data.success){
+          setSuccess(true);
+          console.log(data);
+          history.push('/');
+        }
+        
+        
+        if(data.error){
+          setError(data.error);
+        }
+      });
     },
   });
 
@@ -37,11 +51,14 @@ const context = useContext(ClienteContext)
     <div className='container'>
       <div className='content-formAddPeople-button'>
       <NavLink className='formAddPeople-button' to="/">
-        <svg className='svg-formAddPeople' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+        <svg className='svg-formAddPeople' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
         <span className='card__span'>Cancelar</span>
       </NavLink>
       </div>
 
+      
+      { error !== '' && (<div className="alert alert-danger" role="alert"></div>)}
+      
       <form className="row g-3 form" onSubmit={formik.handleSubmit}>
       <div className="col-md-12">
         <label className='form-label' htmlFor="name">Nombre</label>
@@ -163,7 +180,7 @@ const context = useContext(ClienteContext)
         </div>
        
         <div className="col-md-12 text-center">
-        <button className='btn btn-primary button-submit' type="submit">Registrar</button>
+        <button disabled={formik.isSubmitting} className='btn btn-primary button-submit' type="submit">Registrar</button>
         </div>
      
       </form>

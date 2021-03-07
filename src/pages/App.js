@@ -1,7 +1,7 @@
 
 import Content from '../components/Content';
 import FormAddPeople from './FormAddPeople';
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import './App.css';
 import ClienteProvider from '../context/ClienteContext';
 

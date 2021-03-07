@@ -39,44 +39,6 @@
   width: 85%;
 }
 
-.table {
-  margin: 10px auto;
-  width: 98%;
-}
-
-.card {
-  overflow-y: hidden;
-  overflow-x: auto;
-}
-
-.card_header {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 15px;
-  margin-top: 5px;
-  padding: 5px;
-}
-
-
-.card__button:link, .card__button:visited, .card__button:active, .card__button:hover {
-  text-decoration:none;
-  color: #DAA520;
-  font-size: 17px;
-  font-weight: 700;
-  text-align: c;
-}
-
-svg {
-  display: inline-block;
-  width: 15px;
-  margin-right: 5px;
-  fill: #DAA520;
-}
-
-.toast {
-  position: fixed;
-  z-index: 5
-}
 
 
 
