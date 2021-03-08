@@ -4,7 +4,7 @@ export const ClienteContext = createContext();
 
 const ClienteProvider = (props) => {
   const [success, setSuccess] = useState(false);
-  const [search, setSearch ] = useState('');
+  const [search, setSearch ] = useState({});
 
   return (
     <ClienteContext.Provider value={{

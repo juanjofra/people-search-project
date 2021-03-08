@@ -1,11 +1,13 @@
+const URLdev = 'http://localhost:3300'
+  const URL = 'https://backend-people-search-project.herokuapp.com'
 
 export const getClientes = () => {
 
-  return fetch('https://backend-people-search-project.herokuapp.com/api/clientes').then(res => res.json());
+  return fetch(`${URLdev}/api/clientes`).then(res => res.json());
 }
 
 export const setCliente = (values) => {
-  const url = 'https://backend-people-search-project.herokuapp.com/api/clientes/register';
+  const url = `${URLdev}/api/clientes/register`;
 
      return fetch(url, {
         method: 'POST', 
@@ -15,4 +17,8 @@ export const setCliente = (values) => {
         }
       }).then(res => res.json())
       .catch(error => console.error('Error:', error));
+}
+
+export const searchCliente = (name='', ci='', operator='') => {
+  return fetch(`${URLdev}/api/clientes/buscador?name=${name}&ci=${ci}&operator=${operator}`).then(res => res.json());
 }

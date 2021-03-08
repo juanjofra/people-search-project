@@ -7,8 +7,8 @@ import {ClienteContext} from '../context/ClienteContext';
 function TablePeoples() {
 
  const {loading, clientes} = useGetClientes();
- const {success, setSuccess} = useContext(ClienteContext)
- 
+ const {success, setSuccess} = useContext(ClienteContext);
+
  const Cargando = (
  <div className='conteiner-spiner-loading'>
   <div className="lds-facebook">
