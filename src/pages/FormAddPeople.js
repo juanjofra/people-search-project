@@ -26,15 +26,15 @@ console.log(history)
 
     validationSchema: Yup.object({
       name: Yup.string()
-        .max(35, 'Must be 35 characters or less')
+        .max(35, 'Must be 50 characters or less')
         .required('Requerido'),
+      ci: Yup.number().required('Requerido')
     }),
 
     onSubmit: values => {
       setCliente(values).then(data => {
         if(data.success){
           setSuccess(true);
-          console.log(data);
           history.push('/');
         }
         

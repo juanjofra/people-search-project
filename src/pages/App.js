@@ -15,9 +15,6 @@ function App() {
               <li className='container-fluid__li'>
               <NavLink className='container-fluid__a' to="/">Home</NavLink>
               </li>
-              <li className='container-fluid__li'>
-                <NavLink className='container-fluid__a' to="/dashboard">Dashboard</NavLink>
-              </li>
             </ul>
           </nav>
 
