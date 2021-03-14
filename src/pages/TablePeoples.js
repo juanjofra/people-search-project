@@ -1,12 +1,13 @@
 import React, {useContext, useEffect} from 'react';
-import './TablePeoples.css'
+import './TablePeoples.css';
+import ReactPaginate from 'react-paginate';
 import { NavLink } from "react-router-dom";
 import {useGetClientes} from '../hooks/useGetClientes';
 import {ClienteContext} from '../context/ClienteContext';
 
 function TablePeoples() {
 
- const {loading, clientes} = useGetClientes();
+ const {loading, clientes, pagination, setActualPage} = useGetClientes();
  const {success, setSuccess} = useContext(ClienteContext);
 
  const Cargando = (
@@ -19,6 +20,11 @@ function TablePeoples() {
  </div>
  );
 
+
+ const handlePageClick = (e) => {
+  setActualPage(e.selected +1);
+ }
+
  useEffect(() => {
    if(success){
      setTimeout(() => {
@@ -26,7 +32,7 @@ function TablePeoples() {
      }, 3000);
    }
  }, [success]);
-
+console.log(clientes);
 
   return (
     <>
@@ -74,8 +80,27 @@ function TablePeoples() {
       </>  
       )    
       }
-
-      
+<section>
+<nav role="navigation">
+<ReactPaginate
+          previousLabel={'anterior'}
+          nextLabel={'Siguiente'}
+          breakLabel={'...'}
+          disabledClassName={'disabled'}
+          nextClassName={'button'}
+          previousClassName={'button'}
+          breakClassName={'break-me'}
+          pageCount={pagination.totalPages}
+          marginPagesDisplayed={pagination.page}
+          pageRangeDisplayed={pagination.limit}
+          onPageChange={handlePageClick}
+          containerClassName={'cd-pagination'}
+          activeClassName={'current'}
+        />
+	</nav>
+</section>
+  
+       
       </div>
     </>
   )

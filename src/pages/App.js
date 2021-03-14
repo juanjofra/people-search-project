@@ -17,7 +17,6 @@ function App() {
               </li>
             </ul>
           </nav>
-
           <section className='content'>
             <Switch>
               <Route exact path='/'>
