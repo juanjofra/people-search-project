@@ -3,7 +3,7 @@ import './FormAddPeople.css'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { setCliente } from '../services/fetchClientes';
+import { SetCliente } from '../services/fetchClientes';
 import {ClienteContext} from '../context/ClienteContext';
 
 const FormAddPeople = () => {
@@ -32,7 +32,7 @@ console.log(history)
     }),
 
     onSubmit: values => {
-      setCliente(values).then(data => {
+      SetCliente(values).then(data => {
         if(data.success){
           setSuccess(true);
           history.push('/');

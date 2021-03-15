@@ -7,7 +7,7 @@ import {ClienteContext} from '../context/ClienteContext';
 
 function TablePeoples() {
 
- const {loading, clientes, pagination, setActualPage} = useGetClientes();
+ const {data, loading, error, setPageIndex } = useGetClientes();
  const {success, setSuccess} = useContext(ClienteContext);
 
  const Cargando = (
@@ -22,7 +22,7 @@ function TablePeoples() {
 
 
  const handlePageClick = (e) => {
-  setActualPage(e.selected +1);
+  setPageIndex(e.selected +1);
  }
 
  useEffect(() => {
@@ -32,7 +32,6 @@ function TablePeoples() {
      }, 3000);
    }
  }, [success]);
-console.log(clientes);
 
   return (
     <>
@@ -64,7 +63,7 @@ console.log(clientes);
             </tr>
           </thead>
           <tbody>
-            { clientes.map( cliente => (
+            { data?.docs.map( cliente => (
               <tr key={cliente._id} className="table-head">
                 <td>{cliente.name}</td>
                 <td>{cliente.ci}</td>
@@ -82,6 +81,7 @@ console.log(clientes);
       }
 <section>
 <nav role="navigation">
+  {console.log(data)}
 <ReactPaginate
           previousLabel={'anterior'}
           nextLabel={'Siguiente'}
@@ -90,9 +90,9 @@ console.log(clientes);
           nextClassName={'button'}
           previousClassName={'button'}
           breakClassName={'break-me'}
-          pageCount={pagination.totalPages}
-          marginPagesDisplayed={pagination.page}
-          pageRangeDisplayed={pagination.limit}
+          pageCount={data?.totalPages}
+          marginPagesDisplayed={data?.page}
+          pageRangeDisplayed={data?.limit}
           onPageChange={handlePageClick}
           containerClassName={'cd-pagination'}
           activeClassName={'current'}
